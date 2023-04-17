@@ -22,6 +22,7 @@ def train_mnist_tune(config, data_dir=None, num_epochs=10, num_gpus=0):
         data_dir=data_dir, num_workers=1, batch_size=config["batch_size"]
     )
     metrics = {"loss": "ptl/val_loss", "acc": "ptl/val_accuracy"}
+    # mlflow.log_artifact("mlflow_torch_lightning.py")
     mlflow.pytorch.autolog()
     trainer = pl.Trainer(
         max_epochs=num_epochs,
